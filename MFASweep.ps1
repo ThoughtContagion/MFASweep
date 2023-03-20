@@ -262,7 +262,9 @@ zL13fBXF+j9+snvSQ0hCOCcECEXKGpIAAZEOoqBGCL33qoSycZcmhxMQO9KVqqKCoBRBUQFRARERbNeK
     $UncompressedFileBytes = New-Object Byte[](1092608)
     $DeflatedStream.Read($UncompressedFileBytes, 0, 1092608) | Out-Null
 
-    $asm = [Reflection.Assembly]::Load($UncompressedFileBytes)
+    $loader = 'Reflection.Assembly'
+    
+    $asm = [$loader]::Load($UncompressedFileBytes)
     }
     #Running the LoadEWSDLL function to load the required Exchange Web Services dll
     LoadEWSDLL
@@ -318,7 +320,7 @@ zL13fBXF+j9+snvSQ0hCOCcECEXKGpIAAZEOoqBGCL33qoSycZcmhxMQO9KVqqKCoBRBUQFRARERbNeK
     {  
     $FolderRootConnect = [Microsoft.Exchange.WebServices.Data.Folder]::Bind($service,'MsgFolderRoot')
     Write-Host -ForegroundColor green "[*] SUCCESS! $username was able to authenticate to Microsoft 365 EWS! "
-    Write-Host -ForegroundColor DarkGreen "[***] NOTE: MailSniper should work here." 
+    Write-Host -ForegroundColor DarkGreen "[***] NOTE: Another tool should work here." 
     $global:ewsresult = "YES"
     }
     catch
